@@ -14,9 +14,7 @@ public class Main {
 //        map.put(5, "five");
 //        map.put(6, "six");
 //        map.put(7, "seven");
-
         System.out.println(map.height());
-
 
         while (map.height() < 6) {
             for (int i = 0; i < 20; i++) {
