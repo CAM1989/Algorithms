@@ -4,6 +4,8 @@ import java.util.NoSuchElementException;
 
 public class MyTreeMap<K extends Comparable<K>, V> {
     private Node root;
+    private int lh = 0;
+    private int rh = 0;
 
     private class Node {
         K key;
@@ -196,6 +198,29 @@ public class MyTreeMap<K extends Comparable<K>, V> {
             node.height = node.left.height + 1;
         }
         return node;
+    }
+
+    private int leftHeight(Node node) {
+        if (node != null) {
+            leftHeight(node.left);
+            return lh = lh + 1;
+        }
+        return 0;
+    }
+
+    private int rightHeight(Node node) {
+        if (node != null) {
+            rightHeight(node.right);
+            return rh = rh + 1;
+        }
+        return 0;
+    }
+
+    public boolean isBalanced() {
+        isEmpty();
+        int lh = leftHeight(root);
+        int rh = rightHeight(root);
+        return lh - rh <= 1 && rh - lh <= 1;
     }
 
     @Override
